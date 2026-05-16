@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+    <h1>Estas en Login</h1>
+    <form action="{{ url_for('login') }}" method="POST">
+        <input type="email" name="email" placeholder="Pon tu email">
+        <input type="password" name="password" placeholder="Pon tu password">
+        <button>Registrarte</button>
+    </form>
+{% endblock %}

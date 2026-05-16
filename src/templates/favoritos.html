@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Favoritos
+{% endblock %}
+
+{% block body %}
+    <h1>Estas en Favoritos</h1>
+
+    {% for i in favoritos %}
+
+        <li>
+            <h1>El nombre es: {{ i.nombre }}</h1>
+            <h2>El genero es: {{ i.genero }}</h2>
+            <img src="{{ i.imagen }}" alt="">
+        </li>
+        
+    {% endfor %}
+{% endblock %}

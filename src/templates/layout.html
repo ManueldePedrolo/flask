@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+        
+    {% endblock %}
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <a href="/">Inicio</a>
+    <a href="about">about</a>
+    {% if session.get('rol')=='Admin' %}
+        <a href="{{ url_for('auth') }}">Auth</a>
+    {% endif %}
+
+    {% if session.get('token') %}
+        <form action="{{ url_for('logout') }}">
+            <button type="submit">Cerrar sesion</button>
+            <a href="{{ url_for('do_favorito') }}">Favoritos</a>
+        </form>     
+    {% else %}
+        <a href="{{ url_for('do_register') }}">Register</a>
+        <a href="{{ url_for('do_login') }}">Login</a>
+    {% endif %}
+
+    {% block body %}
+        
+    {% endblock %}
+</body>
+</html>
